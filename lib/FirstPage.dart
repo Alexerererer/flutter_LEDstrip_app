@@ -11,6 +11,8 @@ class FirstPage extends StatelessWidget {
     final theme = Theme.of(context);
     var appState = context.watch<MyAppState>();
 
+
+
     return Scaffold(
       body: Center(
         child: SizedBox(
@@ -22,12 +24,9 @@ class FirstPage extends StatelessWidget {
             ),
             child: const Text('Connect',style: TextStyle(fontSize: 60),),
             onPressed: () {
-              appState.connectTCP();
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) =>  MyHomePage()),
-              );
-
+              appState.connectTCP('greeting');
+              appState.loadConf();
+              Navigator.pushNamed(context,'/home');
 
             },
           ),

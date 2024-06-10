@@ -19,7 +19,7 @@ class _MyHomePageState extends State<MyHomePage> {
     var appState = context.watch<MyAppState>();
 
 
-    if(!appState.socketPlaceholder){ //Currently INVERTED, change this when you want it to work
+    if(appState.socketPlaceholder){ //Currently Ok, change this when you dont want it to work
       return Scaffold(
         body: Center(
           child: Column(

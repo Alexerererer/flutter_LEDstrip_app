@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:flutter_hsvcolor_picker/flutter_hsvcolor_picker.dart';
 
 
@@ -16,7 +15,9 @@ class _ColorPickerPageState extends State<ColorPickerPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
+     Color startHex = ModalRoute.of(context)!.settings.arguments as Color;
+    return Scaffold(
+         body: Center(
       child: Column(
         children: [
           SizedBox(
@@ -36,7 +37,7 @@ class _ColorPickerPageState extends State<ColorPickerPage> {
 
                 ///---------------------------------
                 child: ColorPicker(
-                  color: Colors.blue,
+                  color: startHex,
                   onChanged: (value) => super.setState(
                         () => onChanged(value),
                   ),
@@ -47,9 +48,13 @@ class _ColorPickerPageState extends State<ColorPickerPage> {
               ),
             ),
           ),
-          Text(hex.toString())
+          ElevatedButton(onPressed: () {
+            Navigator.pop(context,hex);
+          },
+              child: Text('Pick'))
         ],
       ),
+    )
     );
   }
 }
